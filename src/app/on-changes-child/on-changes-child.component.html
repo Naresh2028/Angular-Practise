@@ -1,0 +1,43 @@
+
+<div class="container mt-4">
+    <h3>On Changes Example:</h3>
+
+    <div *ngIf="product">
+        <h3>{{ product.title }}</h3>
+        <img [src]="product.image" [alt]="product.title" style="max-height: 150px;" />
+        <p><strong>Price:</strong> {{ product.price | currency : 'INR'}}</p>
+        <p>{{ product.description }}</p>
+    </div>
+</div>
+
+
+
+<hr class="my-4" />
+
+<section class="card p-3 bg-light">
+  <h4>📘 Quick Notes: <code>ngOnChanges</code> Lifecycle Hook</h4>
+  <p>
+    <strong><code>ngOnChanges()</code></strong> is an Angular lifecycle hook that runs whenever one or more data-bound
+    <code>&#64;Input()</code> properties change.
+  </p>
+
+  <h5>Key Points to Remember:</h5>
+  <ul>
+    <li>
+      <strong>Execution Order:</strong> Runs <em>before</em> <code>ngOnInit()</code> on initial load (if inputs exist) and every time an <code>&#64;Input()</code> value updates.
+    </li>
+    <li>
+      <strong><code>SimpleChanges</code> Parameter:</strong> Gives access to <code>currentValue</code>, <code>previousValue</code>, and <code>isFirstChange()</code> for each changed input.
+    </li>
+    <li>
+      <strong>Primitive vs. Object Inputs:</strong> Triggers reliably on primitive values (<code>number</code>, <code>string</code>, <code>boolean</code>). For objects or arrays, it only triggers if the <strong>object reference</strong> changes—not when inner properties are mutated.
+    </li>
+    <li>
+      <strong>Best Use Case:</strong> Reacting to parent input updates to trigger side effects like fetching fresh API data (as done here with <code>productId</code>).
+    </li>
+  </ul>
+
+  <div class="alert alert-info mb-0">
+    <strong>Note on <code>&#64;</code> symbol in Angular 16+:</strong> Using <code>&amp;#64;Input()</code> in HTML prevents Angular's built-in control flow parser (<code>&#64;if</code>, <code>&#64;for</code>) from throwing a template syntax error.
+  </div>
+</section>

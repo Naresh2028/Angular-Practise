@@ -1,0 +1,11 @@
+
+<div class="container mt-4">
+<button class="btn btn-secondary" (click)="decreaseId()" [disabled]="selectedProductId < 1">Decrease</button>
+<span class="mx-3">Current ID: {{ selectedProductId }}</span>
+<button class="btn btn-primary" (click)="increaseId()" [disabled]="selectedProductId >= 20">Increase</button>
+<button class="btn btn-warning" (click)="resetId()">Reset</button>
+</div>
+
+<div class="container mt-3">
+  <app-on-changes-child [productId]="selectedProductId"></app-on-changes-child>
+</div>
