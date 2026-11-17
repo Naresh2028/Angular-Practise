@@ -1,0 +1,54 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <!-- #loginForm="ngForm" exposes form state (valid, invalid, submitted) -->
+  <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" novalidate>
+    
+    <!-- Username Field -->
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        [(ngModel)]="loginData.username"
+        #username="ngModel"
+        required
+        minlength="3"
+        appNoSpaces
+        placeholder="Enter your username"
+      />
+
+      <!-- Validation Error Messages -->
+      <div class="error" *ngIf="username.invalid && (username.dirty || username.touched)">
+        <small *ngIf="username.errors?.['noSpaces']">Username is invalid.</small>
+        <small *ngIf="username.errors?.['required']">Username is required.</small>
+        <small *ngIf="username.errors?.['minlength']">Username must be at least 3 characters.</small>
+      </div>
+    </div>
+
+    <!-- Password Field -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="loginData.password"
+        #password="ngModel"
+        required
+        minlength="6"
+        placeholder="Enter your password"
+      />
+
+      <!-- Validation Error Messages -->
+      <div class="error" *ngIf="password.invalid && (password.dirty || password.touched)">
+        <small *ngIf="password.errors?.['required']">Password is required.</small>
+        <small *ngIf="password.errors?.['minlength']">Password must be at least 6 characters.</small>
+      </div>
+    </div>
+
+
+
+  </form>
+</div>

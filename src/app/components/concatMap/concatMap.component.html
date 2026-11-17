@@ -1,0 +1,4 @@
+<button class="btn btn-primary" (click)="fetchProducts()">Fetch Products</button>
+<div *ngFor="let item of products">
+    {{ item.id }}. {{ item.title }} - ${{ item.price }}
+</div>
